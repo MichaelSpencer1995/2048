@@ -4,7 +4,11 @@ let moveMoot = true
 let score = 0
 let gameLocked = false
 let gameOver
-// localStorage.setItem('highscore', 256)
+
+let currentHighScore = localStorage.getItem('highscore') || 0
+let highScoreEl = document.querySelector('.best-container')
+highScoreEl.innerHTML = (currentHighScore)
+
 
 console.log(localStorage.getItem("highscore"))
 function initModel() {
@@ -51,7 +55,9 @@ function addNew() {
             keepPlaying.classList.add('display-none')
             gameOverText.innerHTML = 'Game Over!'
             gameOverScreen.classList.add('game-over')
-
+            if(score > currentHighScore) {
+                localStorage.setItem('highscore', score)
+            }
         }
     }
 }
@@ -235,13 +241,16 @@ function swapTiles(cur, open, combine) {
         score += doubleVal
         let scoreAdder = document.querySelector('.score-add')
         document.querySelector('.score-container span').innerHTML = score
+        if(score > currentHighScore) {
+            highScoreEl.innerHTML = score
+        }
         scoreAdder.innerHTML = '+' + score
         scoreAdder.classList.remove('score-addition')
         setTimeout(function() {
             scoreAdder.classList.add('score-addition')
         }, 50)
 
-        if(doubleVal == 128) {
+        if(doubleVal == 2048) {
             let winScreen = document.querySelector('.game-message')
             let winText = document.querySelector('.game-message p')
             winText.innerHTML = 'You Win!'
