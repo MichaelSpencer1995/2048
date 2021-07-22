@@ -258,7 +258,7 @@ function swapTiles(cur, open, combine) {
             scoreAdder.classList.add('score-addition')
         }, 50)
 
-        if(doubleVal == 32) {
+        if(doubleVal == 2048) {
             let winScreen = document.querySelector('.game-message')
             let winText = document.querySelector('.game-message p')
             winText.innerHTML = 'You Win!'
