@@ -1,6 +1,5 @@
 let model = []
 let prevModel = []
-let moveMoot = true
 let score = 0
 let gameLocked = false
 let gameOver
@@ -9,8 +8,6 @@ let currentHighScore = localStorage.getItem('highscore') || 0
 let highScoreEl = document.querySelector('.best-container')
 highScoreEl.innerHTML = (currentHighScore)
 
-
-console.log(localStorage.getItem("highscore"))
 function initModel() {
     let id = 0
     for(let i=0; i<4; i++) {
@@ -33,7 +30,6 @@ function initModel() {
 function addNew() {
     permuteModel('byOpen')
     let random = randomOpenTile()
-
     if(random == 'no open tiles') {        
         return
     }
@@ -63,6 +59,7 @@ function addNew() {
 }
 
 function permuteModel(type) {
+    console.log(type)
     switch(type) {
         case 'ArrowUp':
             model.sort((a, b) => a.x - b.x || a.y - b.y)
@@ -99,7 +96,9 @@ function main(dir) {
     })
     // shift again
     permuteModel(dir)
+    console.log(model)
     model.forEach(currentTile => {
+        console.log(currentTile)
         moveTile(currentTile, dir)
     })
     // remove all pairedOnce tags
@@ -107,14 +106,24 @@ function main(dir) {
     // into an 8 should take 2 moves not 1)
     model.forEach(currentTile => currentTile.pairedOnce = false)
     // add next piece and redraw
-    // make sure a move was made to redraw
-    if(!moveMoot) {
+    permuteModel(dir)
+    if(!moveMoot(prevModel, model)) {
+        addNew()
     }
-    addNew()
-    moveMoot = true
     draw()
     model.forEach(currentTile => currentTile.toDeleteFromDom = false)
 }
+
+function moveMoot(state1, state2) {
+    let moveMoot = true
+    for(let i=0; i<state1.length; i++) {
+        if(!(state1[i].x == state2[i].x && state1[i].y == state2[i].y && state1[i].val == state2[i].val)) {
+            moveMoot = false
+        }
+    }
+    return moveMoot
+}
+
 function draw() {
     model.forEach(tile => {
         if(tile.toDeleteFromDom) {
@@ -151,7 +160,6 @@ function moveTile(tile, dir) {
     }
     let openTile = tileNextToIsOpen(tile, dir)
     if(openTile) {
-        moveMoot = false
         swapTiles(tile, openTile)
         moveTile(tile, dir)
     }
@@ -250,13 +258,12 @@ function swapTiles(cur, open, combine) {
             scoreAdder.classList.add('score-addition')
         }, 50)
 
-        if(doubleVal == 2048) {
+        if(doubleVal == 32) {
             let winScreen = document.querySelector('.game-message')
             let winText = document.querySelector('.game-message p')
             winText.innerHTML = 'You Win!'
             winScreen.classList.add('game-won')
             gameLocked = true
-            // localStorage.setItem('highscore', score)
         }
     }
 }
@@ -271,7 +278,7 @@ function randomOpenTile() {
     if(total == 0) {
         return 'no open tiles'
     }
-    // console.log('total', total)
+
     let random = Math.floor(Math.random() * total)
     return random
 }
@@ -282,7 +289,7 @@ function randomValue() {
 
 function weightedRandom(prob) {
     let i, sum=0, r=Math.random()
-    for (i in prob) {
+    for (i in prob) { 
         sum += prob[i]
         if (r <= sum) return i
     }
@@ -291,7 +298,6 @@ function weightedRandom(prob) {
 function restartGame() {
     model = []
     prevModel = []
-    moveMoot = true
     score = 0
     gameLocked = false
     gameOver = undefined
@@ -305,7 +311,7 @@ function restartGame() {
     let winScreen = document.querySelector('.game-message')
     let winText = document.querySelector('.game-message p')
     let keepPlaying = document.querySelector('.keep-playing-button')
-    keepPlaying.classList.remove = 'display-none'
+    keepPlaying.classList.remove('display-none')
     winText.innerHTML = ''
     winScreen.classList.remove('game-won')
     winScreen.classList.remove('game-over')
