@@ -7,6 +7,7 @@ let gameOver
 let currentHighScore = localStorage.getItem('highscore') || 0
 let highScoreEl = document.querySelector('.best-container')
 highScoreEl.innerHTML = (currentHighScore)
+document.body.style.zoom = "80%"
 
 function initModel() {
     let id = 0
