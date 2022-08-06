@@ -296,6 +296,14 @@ function weightedRandom(prob) {
     }
 }
 
+function continueGame() {
+    let winScreen = document.querySelector('.game-message')
+    let winText = document.querySelector('.game-message p')
+    winText.innerHTML = ''
+    winScreen.classList.remove('game-won')
+    gameLocked = false 
+}
+
 function restartGame() {
     model = []
     prevModel = []
@@ -321,14 +329,6 @@ function restartGame() {
     addNew()
     addNew()
     draw()
-}
-
-function continueGame() {
-    let winScreen = document.querySelector('.game-message')
-    let winText = document.querySelector('.game-message p')
-    winText.innerHTML = ''
-    winScreen.classList.remove('game-won')
-    gameLocked = false 
 }
 
 initModel()
