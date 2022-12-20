@@ -328,6 +328,7 @@ h1.title {
 @media(max-width: 550px) {
    html, body {
       overflow-x: hidden;
+      overflow-y: hidden;
    }
    body {
       position: relative;
