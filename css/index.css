@@ -7,6 +7,7 @@ body {
    background: #faf8ef;
    color: #776e65;
    font-family: "Clear Sans";
+   user-select: none;
 }
 
 div {
@@ -332,6 +333,7 @@ h1.title {
       width: 350px;
       height: 350px;
       padding: 10.5px;
+      margin-top: 5px;
    }
    .grid-cell {
       width: 74.375px;

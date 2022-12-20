@@ -36,15 +36,15 @@ function handleTouchMove(evt) {
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
         if ( xDiff > 0 ) {
-            main('ArrowRight')
-        } else {
             main('ArrowLeft')
+        } else {
+            main('ArrowRight')
         }
     } else {
         if ( yDiff > 0 ) {
-            main('ArrowDowm')
-        } else { 
             main('ArrowUp')
+        } else { 
+            main('ArrowDown')
         }
     }
 
