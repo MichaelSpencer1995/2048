@@ -61,6 +61,9 @@ a {
    background: rgba(238, 228, 218, 0.35);
 }
 
+
+
+
 .grid-cell:last-child {
    margin-right: 0;
 }
@@ -209,7 +212,7 @@ h1.title {
    flex-shrink: 0;
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: 550px) {
    .feedback-button {
       /* float: none; */
       position: fixed;
@@ -319,4 +322,31 @@ h1.title {
 
 .display-none {
    display: none !important;
+}
+
+@media(max-width: 550px) {
+   .container {
+      width: 350px;
+   }
+   .game-container {
+      width: 350px;
+      height: 350px;
+      padding: 10.5px;
+   }
+   .grid-cell {
+      width: 74.375px;
+      height: 74.375px;
+      margin-right: 10.5px;
+   }
+   .grid-row {
+      margin-bottom: 10.5px;
+   }
+   .tile, .tile .tile-inner {
+      width: 74.89999px;
+      height: 74.89999px;
+      line-height: 74.89999px;
+   }
+   .tile .tile-inner {
+      font-size: 28px;
+   }
 }
