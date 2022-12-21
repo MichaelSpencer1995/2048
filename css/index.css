@@ -10,7 +10,8 @@ body {
    user-select: none;
    touch-action: none;
 }
-html, * {
+html {
+   user-select: none;
    touch-action: none;
 }
 
