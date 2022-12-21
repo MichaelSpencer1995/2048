@@ -1,3 +1,11 @@
+setInterval(() => {
+    document.body.style.overflowX = 'hidden'
+    document.body.style.overflowY = 'hidden'
+    console.log('test')
+}, 1500)
+
+
+
 let model = []
 let prevModel = []
 let score = 0
