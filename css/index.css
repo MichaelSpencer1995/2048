@@ -8,6 +8,10 @@ body {
    color: #776e65;
    font-family: "Clear Sans";
    user-select: none;
+   touch-action: auto;
+}
+html {
+   touch-action: auto;
 }
 
 div {
