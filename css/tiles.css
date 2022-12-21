@@ -212,22 +212,12 @@
 
 
 
-    .tile.tile-128 .tile-inner {}
-    .tile.tile-256 .tile-inner {}
-    .tile.tile-512 .tile-inner {}
-    .tile.tile-1024 .tile-inner {
-        font-size: 24px;
-    }
-    .tile.tile-1024 .tile-inner {
-        font-size: 24px;
-    }
-    .tile.tile-2048 .tile-inner {
-        font-size: 24px;
-    }
-    .tile.tile-4096 .tile-inner {
-        font-size: 23px;
-    }
-    .tile.tile-16384 .tile-inner {
-        font-size: 22px;
-    }
+    .tile.tile-128 .tile-inner {font-size: 24px;}
+    .tile.tile-256 .tile-inner {font-size: 24px;}
+    .tile.tile-512 .tile-inner {font-size: 24px;}
+    .tile.tile-1024 .tile-inner {font-size: 24px;}
+    .tile.tile-1024 .tile-inner {font-size: 24px;}
+    .tile.tile-2048 .tile-inner {font-size: 24px;}
+    .tile.tile-4096 .tile-inner {font-size: 23px;}
+    .tile.tile-16384 .tile-inner {font-size: 22px;}
 }
