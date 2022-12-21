@@ -139,6 +139,8 @@ h1.title {
 .scores-container {
    float: right;
    display: flex;
+   position: absolute;
+   right: 0;
 }
 
 .heading:after {
